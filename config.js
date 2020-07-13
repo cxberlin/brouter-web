@@ -20,7 +20,7 @@
     } else {
         // desktop configuration
 
-        BR.conf.host = 'http://brouter.keidel.me:17777';
+        BR.conf.host = 'http://brouter.cxberlin.com:17777';
 
         // Pre-loading selected profile disabled locally. Needs brouter-web to run on a
         // local web server with the profiles in a subdirectory or allowing file access
@@ -66,7 +66,7 @@
     };
 
     BR.conf.overlays = {
-        'CXB Gravel': 'http://gravel-tiles.keidel.me/tile/{z}/{x}/{y}.png'
+        'CXB Gravel': 'http://gravel-tiles.cxberlin.com/tile/{z}/{x}/{y}.png'
     };
 
     // Base layer to show on start, as position number in the layer switcher, starting from 0, default is first
