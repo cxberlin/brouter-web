@@ -38,12 +38,12 @@
 
     BR.conf.profiles = [
         'gravel',
+        'gravel-leicht',
         'mtb',
         'rennrad',
         'rennrad-alternativ',
-        'gravel-leicht',
-        'trekking-radwege',
-        'trekking'
+        'trekking',
+        'trekking-radwege'
     ];
 
     // Removes default base layers when 'true'. Useful for only having custom layers (see below).
