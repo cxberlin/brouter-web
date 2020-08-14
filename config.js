@@ -26,7 +26,7 @@
         // local web server with the profiles in a subdirectory or allowing file access
         // in the Browser (security!), see
         // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-        BR.conf.profilesUrl = 'https://routing.cxberlin.com/brouter-profiles/';
+        BR.conf.profilesUrl = 'http://routing.cxberlin.com/brouter-profiles/';
         //BR.conf.profilesUrl = 'file://YOUR_PATH_TO/profiles2/';
     }
 
