@@ -55,6 +55,35 @@ BR.Elevation = L.Control.Elevation.extend({
         setParent(this.getContainer(), document.getElementById('elevation-chart'));
     },
 
+    initCollapse: function(map) {
+        var self = this;
+        var onHide = function() {
+            $('#elevation-btn').removeClass('active');
+            // we must fetch tiles that are located behind elevation-chart
+            map._onResize();
+
+            if (this.id && BR.Util.localStorageAvailable() && !self.shouldRestoreChart) {
+                localStorage.removeItem(this.id);
+            }
+        };
+        var onShow = function() {
+            $('#elevation-btn').addClass('active');
+
+            if (this.id && BR.Util.localStorageAvailable()) {
+                localStorage[this.id] = 'true';
+            }
+        };
+        // on page load, we want to restore collapse state from previous usage
+        $('#elevation-chart')
+            .on('hidden.bs.collapse', onHide)
+            .on('shown.bs.collapse', onShow)
+            .each(function() {
+                if (this.id && BR.Util.localStorageAvailable() && localStorage[this.id] === 'true') {
+                    self.shouldRestoreChart = true;
+                }
+            });
+    },
+
     update: function(track, layer) {
         this.clear();
 
@@ -65,9 +94,17 @@ BR.Elevation = L.Control.Elevation.extend({
         }
 
         if (track && track.getLatLngs().length > 0) {
+            if (this.shouldRestoreChart === true) $('#elevation-chart').collapse('show');
+            this.shouldRestoreChart = undefined;
+
             this.addData(track.toGeoJSON(), layer);
 
             layer.on('mouseout', this._hidePositionMarker.bind(this));
+        } else {
+            if ($('#elevation-chart').hasClass('show')) {
+                this.shouldRestoreChart = true;
+            }
+            $('#elevation-chart').collapse('hide');
         }
     },
 
