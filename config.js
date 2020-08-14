@@ -26,7 +26,7 @@
         // local web server with the profiles in a subdirectory or allowing file access
         // in the Browser (security!), see
         // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-        BR.conf.profilesUrl = 'https://www.keidel.me/brouter-profiles/';
+        BR.conf.profilesUrl = 'https://www.cxberlin.com/brouter-profiles/';
         //BR.conf.profilesUrl = 'file://YOUR_PATH_TO/profiles2/';
     }
 
@@ -37,19 +37,13 @@
     BR.conf.initialMapZoom = 5;
 
     BR.conf.profiles = [
-        'dhanek-gravel',
-        'dhanek-mtb',
-        'dhanek-rennrad',
-        'fastbike',
-        'fastbike-lowtraffic',
-        'fastbike-verylowtraffic',
-        'poutnikl-mtb-light',
-        'poutnikl-trekking-cycle-routes',
-        'trekking',
-        'trekking-ignore-cr',
-        'trekking-noferries',
-        'trekking-nosteps',
-        'zossebart-mtb'
+        'gravel',
+        'mtb',
+        'rennrad',
+        'rennrad-alternativ',
+        'gravel-leicht',
+        'trekking-radwege',
+        'trekking'
     ];
 
     // Removes default base layers when 'true'. Useful for only having custom layers (see below).
