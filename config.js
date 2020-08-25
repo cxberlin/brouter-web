@@ -20,13 +20,13 @@
     } else {
         // desktop configuration
 
-        BR.conf.host = 'http://brouter.cxberlin.com:17777';
+        BR.conf.host = 'https://brouter.cxberlin.com';
 
         // Pre-loading selected profile disabled locally. Needs brouter-web to run on a
         // local web server with the profiles in a subdirectory or allowing file access
         // in the Browser (security!), see
         // https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally
-        BR.conf.profilesUrl = 'http://routing.cxberlin.com/brouter-profiles/';
+        BR.conf.profilesUrl = 'https://routing.cxberlin.com/brouter-profiles/';
         //BR.conf.profilesUrl = 'file://YOUR_PATH_TO/profiles2/';
     }
 
@@ -38,12 +38,12 @@
 
     BR.conf.profiles = [
         'gravel',
-        'gravel-leicht',
         'mtb',
         'rennrad',
         'rennrad-alternativ',
         'trekking',
-        'trekking-radwege'
+        'trekking-radwege',
+        'trekking-gravel'
     ];
 
     // Removes default base layers when 'true'. Useful for only having custom layers (see below).
