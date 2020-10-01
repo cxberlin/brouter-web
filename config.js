@@ -60,7 +60,8 @@
     };
 
     BR.conf.overlays = {
-        'CXB Gravel': 'http://gravel-tiles.cxberlin.com/tile/{z}/{x}/{y}.png'
+        'CXB Gravel': 'https://gravel-tiles.cxberlin.com/tile/{z}/{x}/{y}.png',
+        'CXB POIs': 'https://poitiles.cxberlin.com/tile/{z}/{x}/{y}.png'
     };
 
     // Base layer to show on start, as position number in the layer switcher, starting from 0, default is first
