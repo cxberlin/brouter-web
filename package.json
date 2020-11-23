@@ -43,7 +43,7 @@
         "async": "~0.9.2",
         "bootbox": "~5.3.4",
         "bootstrap": "4.3.1",
-        "bootstrap-select": "1.13.0",
+        "bootstrap-select": "1.13.6",
         "bootstrap-slider": "^9.8.1",
         "codemirror": "^5.35.0",
         "d3": "~3.5.5",
@@ -107,7 +107,7 @@
         "husky": "^2.3.0",
         "i18next-scanner": "^2.9.1",
         "merge-stream": "^2.0.0",
-        "node-fetch": "^2.3.0",
+        "node-fetch": "^2.6.1",
         "npmfiles": "^0.1.1",
         "prettier": "^1.17.1",
         "pretty-quick": "^1.10.0"
