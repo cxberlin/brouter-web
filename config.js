@@ -38,6 +38,7 @@
 
     BR.conf.profiles = [
         'gravel',
+        'cx',
         'mtb',
         'rennrad',
         'rennrad-alternativ',
