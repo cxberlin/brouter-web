@@ -158,7 +158,7 @@
     "export-tooltip": "Route exportieren",
     "load": {
       "nogos": "No-go-Areas laden",
-      "title": "Laden",
+      "title": "Import",
       "tooltip": "{{tracksAction}} ({{tracksKey}} Taste)\n{{nogosAction}} ({{nogosKey}})",
       "tracks": "Touren laden"
     },
