@@ -15,6 +15,7 @@
     "tooltip": "Show more information about BRouter-Web"
   },
   "credits": {
+    "boundaries": "Administrative Boundaries: <a href=\"https://osm-boundaries.com\" target=\"_blank\">OSM-Boundaries</a>, <a href=\"https://overpass-api.de/\" target=\"_blank\">Overpass API</a>",
     "brouter": "BRouter",
     "brouter-license": "<a target=\"_blank\" href=\"https://brouter.de/brouter\">BRouter</a> &copy; Arndt Brenschede",
     "elevation-data": "Dane wysokościowe",
@@ -23,7 +24,8 @@
     "map-data": "Dane mapy",
     "map-tiles": "Kafelki mapy",
     "nominatim": "Wyszukaj przez <a href=\"https://wiki.openstreetmap.org/wiki/Nominatim\" target=\"_blank\" data-i18n=\"credits.nominatim\">Nominatim</a>",
-    "openstreetmap": "&copy; <a target=\"_blank\" href=\"https://www.openstreetmap.org/copyright\" >Współtwórcy OpenStreetMap</a> na licencji <a target=\"_blank\" href=\"https://opendatacommons.org/licenses/odbl/\" >ODbL</a>"
+    "openstreetmap": "&copy; <a target=\"_blank\" href=\"https://www.openstreetmap.org/copyright\" >Współtwórcy OpenStreetMap</a> na licencji <a target=\"_blank\" href=\"https://opendatacommons.org/licenses/odbl/\" >ODbL</a>",
+    "title": "Credits"
   },
   "export": {
     "format": "Format",
@@ -94,6 +96,8 @@
     "delete-nogo-areas": "Usuń wszystkie strefy no-go",
     "delete-pois": "Usuń wszystkie punkty zainteresowania",
     "delete-route": "Usunąć trasę?",
+    "draw-circlego-start": "Draw limited {{radius}}km go-to zone",
+    "draw-circlego-stop": "Stop drawing limited {{radius}}km go-to zone",
     "draw-poi-start": "Draw points of interest",
     "draw-poi-stop": "Stop drawing points of interest",
     "draw-route-start": "Draw route",
@@ -267,6 +271,8 @@
   },
   "warning": {
     "cannot-get-route": "Błąd pobierania URL trasy",
+    "invalid-route-from": "Start marker is too far from a route.",
+    "invalid-route-to": "Destination marker is too far from a route.",
     "no-response": "brak odpowiedzi z serwera",
     "no-route-found": "Błąd: nie można znaleźć trasy dla zadanych punktów. Spróbuj przesunąć je bliżej dróg.",
     "profile-error": "Błąd profilu: brak lub pusta odpowiedź z serwera",

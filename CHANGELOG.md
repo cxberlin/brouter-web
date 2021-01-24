@@ -1,5 +1,23 @@
 # BRouter-Web Changelog
 
+## 0.15.0 (2021-01-15)
+
+### New Features
+
+-   Switch elevation diagram plugin to Heightgraph (colors by incline) - by [@alexcojocaru](https://github.com/alexcojocaru) ([#345](https://github.com/nrenner/brouter-web/pull/345))
+
+### New Features [de]
+
+-   [German users only] New button to determine 15km allowed zone ([#358](https://github.com/nrenner/brouter-web/issues/358)), [@mjaschen](https://github.com/mjaschen): ([#357](https://github.com/nrenner/brouter-web/pull/357))
+
+See also [milestone 0.15.0](https://github.com/nrenner/brouter-web/milestone/15?closed=1)
+
+## 0.14.0 (2020-12-04)
+
+### New Features [fr]
+
+-   [French users only] New button to add 20km allowed zone - by [@bagage](https://github.com/bagage) ([#347](https://github.com/nrenner/brouter-web/pull/347), [#350](https://github.com/nrenner/brouter-web/pull/350), [#352](https://github.com/nrenner/brouter-web/pull/352))
+
 ## 0.13.0 (2020-08-04)
 
 See also [milestone 0.13.0](https://github.com/nrenner/brouter-web/milestone/14?closed=1)
