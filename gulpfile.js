@@ -27,6 +27,9 @@ var jsonConcat = require('gulp-json-concat');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync');
 var merge = require('merge-stream');
+var babel = require('gulp-babel');
+var marked = require('marked');
+var fs = require('fs');
 
 const server = browserSync.create();
 
@@ -35,7 +38,12 @@ var debug = false;
 var paths = {
     // see overrides in package.json
     scriptsConfig: mainNpmFiles()
-        .filter((f) => RegExp('url-search-params/.*\\.js', 'i').test(f))
+        .filter(
+            (f) =>
+                RegExp('url-search-params/.*\\.js', 'i').test(f) ||
+                RegExp('core-js-bundle/.*\\.js', 'i').test(f) ||
+                RegExp('regenerator-runtime/.*\\.js', 'i').test(f)
+        )
         .concat([
             // large lib as extra file for faster parallel loading (*.min.js already excluded from bundle)
             'node_modules/@turf/turf/turf.min.js',
@@ -50,11 +58,14 @@ var paths = {
                 (f) =>
                     RegExp('.*\\.js', 'i').test(f) &&
                     !RegExp('.*\\.min\\.js', 'i').test(f) &&
-                    !RegExp('url-search-params/.*\\.js', 'i').test(f)
+                    !RegExp('url-search-params/.*\\.js', 'i').test(f) &&
+                    !RegExp('core-js-bundle/.*\\.js', 'i').test(f) &&
+                    !RegExp('regenerator-runtime/.*\\.js', 'i').test(f)
             )
         )
         .concat([
             'js/Browser.js',
+            'js/WhatsNew.js',
             'js/Util.js',
             'js/Map.js',
             'js/LayersConfig.js',
@@ -92,7 +103,19 @@ gulp.task('clean', function (cb) {
 // libs that require loading before config.js
 gulp.task('scripts_config', function () {
     // just copy for now
-    return gulp.src(paths.scriptsConfig).pipe(gulp.dest(paths.dest));
+    return gulp
+        .src(paths.scriptsConfig)
+        .pipe(
+            rename(function (path) {
+                if (path.basename === 'minified') {
+                    path.basename = 'core-js-bundle.min';
+                } else if (path.basename === 'runtime') {
+                    path.basename = 'regenerator-runtime';
+                }
+            })
+        )
+        .pipe(replace('//# sourceMappingURL=minified.js.map', ''))
+        .pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('scripts', function () {
@@ -103,6 +126,7 @@ gulp.task('scripts', function () {
         .src(paths.scripts, { base: '.' })
         .pipe(sourcemaps.init())
         .pipe(cached('scripts'))
+        .pipe(gulpif(!debug, babel()))
         .pipe(gulpif(!debug, uglify()))
         .pipe(remember('scripts'))
         .pipe(concat(paths.destName + '.js'))
@@ -161,6 +185,11 @@ gulp.task('locales', function () {
 
 gulp.task('boundaries', function () {
     return gulp.src(paths.boundaries).pipe(gulp.dest(paths.dest + '/boundaries'));
+});
+
+gulp.task('changelog', function (cb) {
+    var content = 'BR.changelog = `' + marked(fs.readFileSync('./CHANGELOG.md', 'utf-8')) + '`';
+    fs.writeFile(paths.dest + '/changelog.js', content, cb);
 });
 
 gulp.task('reload', function (done) {
@@ -329,7 +358,8 @@ gulp.task(
         'images',
         'fonts',
         'locales',
-        'boundaries'
+        'boundaries',
+        'changelog'
     )
 );
 
