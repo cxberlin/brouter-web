@@ -15,6 +15,9 @@ BR.routeLoader = function (map, layersControl, routing, pois) {
             simplifyTolerance: -1,
             isTestMode: false,
             simplifyLastKnownGood: 0.001,
+            shortcut: {
+                open: 79, // char code for 'O'; used in conjunction with 'shift'
+            },
         },
 
         setDialogDraggable: function (jqDlgHeader) {
@@ -84,12 +87,14 @@ BR.routeLoader = function (map, layersControl, routing, pois) {
             (this._bounds = undefined), (this._trackPoints = []);
             this._currentGeoJSON = {};
             this._options = {
-                ext: 'gpx',
                 showTrackLayer: true,
                 showPointAsPoi: true,
                 simplifyTolerance: -1,
                 isTestMode: false,
                 simplifyLastKnownGood: 0.001,
+                shortcut: {
+                    open: 79, // char code for 'O'; used in conjunction with 'shift'
+                },
             };
         },
 
@@ -186,7 +191,8 @@ BR.routeLoader = function (map, layersControl, routing, pois) {
                 }.bind(this)
             );
 
-            L.DomUtil.get('submitLoadEditTrack').onclick = L.bind(function () {
+            L.DomUtil.get('submitLoadEditTrack').onclick = L.bind(function (e) {
+                e.preventDefault(); // prevent page reload on form submission
                 this._closeCanceled = false;
                 this.onBusyChanged(true);
                 if (this._testLayer.getLayers().length > 0) {
@@ -223,6 +229,8 @@ BR.routeLoader = function (map, layersControl, routing, pois) {
                     this.onManualCollapse(e);
                 }.bind(this)
             );
+
+            L.DomEvent.addListener(document, 'keydown', this.keydownListener, this);
 
             // dummy, no own representation, delegating to EasyButton
             var dummy = L.DomUtil.create('div');
@@ -381,6 +389,16 @@ BR.routeLoader = function (map, layersControl, routing, pois) {
             if (!this._options.isTestMode) this.addRoutingPoints();
 
             this.onBusyChanged(false);
+        },
+
+        keydownListener: function (e) {
+            if (
+                BR.Util.keyboardShortcutsAllowed(e) &&
+                e.keyCode === this._options.shortcut.open &&
+                true === e.shiftKey
+            ) {
+                $('#navbarLoadEditTracks').click();
+            }
         },
     });
 
