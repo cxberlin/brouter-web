@@ -38,6 +38,7 @@
 
     BR.conf.profiles = [
         'gravel',
+        'gravel_beta',
         'rennrad',
         'rennrad-alternativ',
         'trekking',
