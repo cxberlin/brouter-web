@@ -39,7 +39,13 @@ BR.confLayers.tree = {
                     'osmbe-nl',
                 ]
             },
-            'OpenStreetMap.CH',
+            {
+                'CH': [
+                    'OpenStreetMap.CH',
+                    'swisstopo-landeskarte',
+                    'swisstopo-aerial',
+                ]
+            },
             'topplus-open',
             {
                 'IL': [
@@ -146,6 +152,7 @@ BR.confLayers.tree = {
                 'health_food',
                 'ice_cream_shop',
                 'organic',
+                'supermarket',
             ]
         },
         'tourism': [
